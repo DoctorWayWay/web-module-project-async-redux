@@ -1,4 +1,4 @@
-import { FETCH_START, FETCH_SUCCESS } from "../actions";
+import { FETCH_ERROR, FETCH_START, FETCH_SUCCESS } from "../actions";
 const initialState = {
   dogImage:
     "https://images.dog.ceo/breeds/terrier-westhighland/n02098286_3462.jpg",
@@ -21,6 +21,13 @@ export const reducer = (state = initialState, action) => {
         dogImage: action.payload,
         isFetching: false,
         error: "",
+      };
+    case FETCH_ERROR:
+      return {
+        ...state,
+        dogImage: "",
+        isFetching: false,
+        error: action.payload,
       };
     default:
       return state;
