@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+// Library Imports
+import React from "react";
+import { connect } from "react-redux";
 
-function App() {
+// Action Imports
+import { getDog } from "./actions";
+
+const handleNewDog = () => {
+  getDog();
+};
+
+const App = (props) => {
+  const { dogImage } = props;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <h1>Random Doggo Finder 3000</h1>
+      <img src={dogImage} alt="First a white poodle, then a random dog" />
+      <button onClick={handleNewDog}>New Doggo</button>
     </div>
   );
-}
+};
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    dogImage: state.dogImage,
+  };
+};
+
+export default connect(mapStateToProps, { getDog })(App);
