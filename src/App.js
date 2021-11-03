@@ -5,12 +5,12 @@ import { connect } from "react-redux";
 // Action Imports
 import { getDog } from "./actions";
 
-const handleNewDog = () => {
-  getDog();
-};
+const App = ({ dogImage, getDog }) => {
+  const handleNewDog = (event) => {
+    event.preventDefault();
+    getDog();
+  };
 
-const App = (props) => {
-  const { dogImage } = props;
   return (
     <div className="app">
       <h1>Random Doggo Finder 3000</h1>

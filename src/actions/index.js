@@ -1,12 +1,6 @@
 // Library Imports
 import axios from "axios";
 
-export const FETCH_START = "FETCH_START";
-
-export const fetchStart = () => {
-  return { type: FETCH_START };
-};
-
 // Fetching from Dog API
 export const getDog = () => {
   return (dispatch) => {
@@ -14,10 +8,21 @@ export const getDog = () => {
     axios
       .get("https://dog.ceo/api/breeds/image/random")
       .then((response) => {
-        console.log(response);
+        console.log(response.data.message);
+        dispatch(fetchSuccess(response.data.message));
       })
       .catch((error) => {
         console.log(error);
       });
   };
+};
+
+export const FETCH_START = "FETCH_START";
+export const FETCH_SUCCESS = "FETCH_SUCCESS";
+
+export const fetchStart = () => {
+  return { type: FETCH_START };
+};
+export const fetchSuccess = (dog) => {
+  return { type: FETCH_SUCCESS, payload: dog };
 };
