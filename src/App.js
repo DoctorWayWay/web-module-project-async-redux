@@ -1,11 +1,15 @@
 // Library Imports
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
 // Action Imports
 import { getDog } from "./actions";
 
 const App = ({ dogImage, getDog }) => {
+  useEffect(() => {
+    getDog();
+  }, []);
+
   const handleNewDog = (event) => {
     event.preventDefault();
     getDog();

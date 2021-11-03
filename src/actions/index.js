@@ -8,7 +8,6 @@ export const getDog = () => {
     axios
       .get("https://dog.ceo/api/breeds/image/random")
       .then((response) => {
-        console.log(response.data.message);
         dispatch(fetchSuccess(response.data.message));
       })
       .catch((error) => {
