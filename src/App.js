@@ -17,11 +17,17 @@ const App = ({ dogImage, getDog, error, isFetching }) => {
 
   return (
     <div className="app">
-      <h1>Random Doggo Finder 3000</h1>
-      {error && <h2>{error}</h2>}
-      {isFetching && <h2>&#128054; Searching for doggo &#128054;</h2>}
-      <img src={dogImage} alt="First a white poodle, then a random dog" />
-      <button onClick={handleNewDog}>New Doggo</button>
+      <h1 className="app__title">Random Doggo Finder 3000</h1>
+      {error && <h2 className="error">{error}</h2>}
+      {isFetching && (
+        <h2 className="fetching">&#128054; Searching for doggo &#128054;</h2>
+      )}
+      <div className="app__image">
+        <img src={dogImage} alt="First a white poodle, then a random dog" />
+      </div>
+      <button className="button" onClick={handleNewDog}>
+        Get New Doggo
+      </button>
     </div>
   );
 };
