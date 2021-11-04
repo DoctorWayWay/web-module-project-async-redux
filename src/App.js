@@ -22,9 +22,13 @@ const App = ({ dogImage, getDog, error, isFetching }) => {
       {isFetching && (
         <h2 className="fetching">&#128054; Searching for doggo &#128054;</h2>
       )}
-      <div className="app__image">
-        <img src={dogImage} alt="First a white poodle, then a random dog" />
-      </div>
+      {isFetching === false && (
+        <img
+          className="app__image"
+          src={dogImage}
+          alt="First a white poodle, then a random dog"
+        />
+      )}
       <button className="button" onClick={handleNewDog}>
         Get New Doggo
       </button>
